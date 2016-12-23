@@ -18,8 +18,10 @@ class PointsController extends Controller
         $this->request = array();
     }
 
-    public function balance()
+    public function balance(Request $request)
     {
+        return $request;
+
         $balance_response = [];
         if (isset($this->request['account_id'])) {
             $balance_response = ['new_balance'=>100];
@@ -34,7 +36,7 @@ class PointsController extends Controller
     public function credit(Request $request)
     {
         $credit_response = [];
-        if (isset($this->request['account_id'])) {
+        if (isset($request['account_id'])) {
             $credit_response = ['new_balance'=>120];
         } else {
             $credit_response = [
