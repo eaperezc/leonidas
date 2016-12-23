@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Points;
 
 class PointsController extends Controller
 {
@@ -75,4 +76,11 @@ class PointsController extends Controller
             $this->request = $request->all();
         }
     }
+
+    public function test($account_id)
+    {
+        return Point::where([ 'account_id' => $account_id ])->get();
+    }
+
+
 }
