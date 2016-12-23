@@ -21,4 +21,4 @@ $app->get('/balance', 'PointsController@balance');
 //Route  to credit points from a account
 $app->post('/credit', 'PointsController@credit');
 //Route  to debit points from a account
-$app->get('/debit', 'PointsController@debit');
+$app->post('/debit', 'PointsController@debit');
