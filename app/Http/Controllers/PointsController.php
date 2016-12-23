@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Points;
+use App\Point;
 
 class PointsController extends Controller
 {
