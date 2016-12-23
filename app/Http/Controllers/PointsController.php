@@ -20,7 +20,15 @@ class PointsController extends Controller
 
     public function balance()
     {
-        return 100;
+        $balance_response = [];
+        if (isset($this->request['account_id'])) {
+            $balance_response = ['new_balance'=>100];
+        } else {
+            $balance_response = [
+                'error' =>  app('translator')->trans('messages.must_send_valid_account_id')
+            ];
+        }
+        return $balance_response;
     }
 
     public function credit(Request $request)
@@ -29,7 +37,9 @@ class PointsController extends Controller
         if (isset($this->request['account_id'])) {
             $credit_response = ['new_balance'=>120];
         } else {
-            $credit_response = ['error' =>  app('translator')->trans('messages.must_send_valid_account_id')];
+            $credit_response = [
+                'error' =>  app('translator')->trans('messages.must_send_valid_account_id')
+            ];
         }
         return $credit_response;
     }
@@ -40,7 +50,9 @@ class PointsController extends Controller
         if (isset($this->request['account_id'])) {
             $debit_response = ['new_balance'=>0];
         } else {
-            $credit_response = ['error' =>  app('translator')->trans('messages.must_send_valid_account_id')];
+            $debit_response = [
+                'error' =>  app('translator')->trans('messages.must_send_valid_account_id')
+            ];
         }
         return $debit_response;
     }
