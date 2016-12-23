@@ -79,7 +79,8 @@ class PointsController extends Controller
 
     public function test($account_id)
     {
-        return Point::where('account_id', $account_id)->first();
+        return $account_id;
+        //return Point::where('account_id', $account_id)->first();
     }
 
 
