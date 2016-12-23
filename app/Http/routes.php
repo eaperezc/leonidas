@@ -16,5 +16,9 @@ $app->get('/', function () use ($app) {
 });
 
 
-
+//Route to get the balance of a account
 $app->get('/balance', 'PointsController@balance');
+//Route  to credit points from a account
+$app->post('/credit', 'PointsController@credit');
+//Route  to debit points from a account
+$app->get('/debit', 'PointsController@debit');

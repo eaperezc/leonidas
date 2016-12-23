@@ -18,4 +18,14 @@ class PointsController extends Controller
     {
         return 100;
     }
+    
+    public function credit()
+    {
+        return ['new_balance'=>120];
+    }
+
+    public function debit()
+    {
+        return ['new_balance'=>0];
+    }
 }
