@@ -93,6 +93,9 @@ $app->singleton(
 |
 */
 
+//Configure general app
+$app->configure('app');
+
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__.'/../app/Http/routes.php';
 });
