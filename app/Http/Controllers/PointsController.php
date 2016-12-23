@@ -18,8 +18,10 @@ class PointsController extends Controller
         $this->request = array();
     }
 
-    public function balance()
+    public function balance(Request $request)
     {
+        return $request;
+
         $balance_response = [];
         //Get the request params
         $this->getRequest($request);
