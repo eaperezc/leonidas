@@ -20,7 +20,7 @@ class PointsController extends Controller
 
     public function balance(Request $request)
     {
-        return $request;
+        return $request->input('account_id');
 
         $balance_response = [];
         //Get the request params
