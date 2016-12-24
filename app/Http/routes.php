@@ -16,12 +16,6 @@ $app->get('/', function () use ($app) {
 });
 
 
-$app->group(['prefix' => 'leonidas'], function () use ($app) {
-
-    $app->get('/', function () use ($app) {
-        return $app->version();
-    });
-
     //Route to get the balance of a account
     $app->get('/balance', 'PointsController@balance');
     //Route  to credit points from a account
@@ -32,5 +26,3 @@ $app->group(['prefix' => 'leonidas'], function () use ($app) {
 
     $app->get('/test/{account_id}', 'PointsController@test');
     $app->get('/points/register/{account_id}', 'PointsController@register');
-
-});
