@@ -8,8 +8,6 @@ class Point extends Model
 {
 
 
-    protected $collection = 'points';
-
     /**
      * The attributes that are mass assignable.
      *

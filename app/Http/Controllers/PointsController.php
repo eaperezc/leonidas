@@ -21,6 +21,7 @@ class PointsController extends Controller
 
     public function balance(Request $request)
     {
+
         $balance_response = [];
         //Get the request params
         $this->getRequest($request);
@@ -36,52 +37,46 @@ class PointsController extends Controller
 
     public function credit(Request $request)
     {
-        $credit_response = [];
-        //Get the request params
-        $this->getRequest($request);
-        if (isset($this->request['account_id'])) {
-            $credit_response = ['new_balance'=>120];
-        } else {
-            $credit_response = [
-                'error' =>  app('translator')->trans('messages.must_send_valid_account_id')
-            ];
-        }
-        return $credit_response;
+        $account_id = $request->input('account_id');
+        $amount = $request->input('amount');
+
+        $record = Point::where('account_id', $account_id)->first();
+        $record->points += $amount;
+
+        $record->save();
+
+        return $record;
     }
 
     public function debit(Request $request)
     {
-        $debit_response = [];
-        //Get the request params
-        $this->getRequest($request);
-        if (isset($this->request['account_id'])) {
-            $debit_response = ['new_balance'=>0];
-        } else {
-            $debit_response = [
-                'error' =>  app('translator')->trans('messages.must_send_valid_account_id')
-            ];
-        }
-        return $debit_response;
+        $account_id = $request->input('account_id');
+        $amount = $request->input('amount');
+
+        $record = Point::where('account_id', $account_id)->first();
+        $record->points -= $amount;
+
+        $record->save();
+
+        return $record;
     }
 
-    /**
-    * Gets the request object
-    */
-    private function getRequest(Request $request)
-    {
-        //Gets the request input
-        if ($request->isJson()) {
-            $this->request = $request->json()->all();
-        } else {
-            $this->request = $request->all();
-        }
-    }
 
     public function test($account_id)
     {
-        return $account_id;
-        //return Point::where('account_id', $account_id)->first();
+        return Point::where('account_id', $account_id)->first();
     }
+
+
+    public function register($account_id)
+    {
+        $point = new Point;
+        $point->account_id = $account_id;
+        $point->points = 20;
+
+        $point->save();
+    }
+
 
 
 }
